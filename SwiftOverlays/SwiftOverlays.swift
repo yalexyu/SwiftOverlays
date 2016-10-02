@@ -300,14 +300,14 @@ open class SwiftOverlays: NSObject {
             
              label.frame = label.frame.offsetBy(dx: accessoryView.frame.size.width + padding * 2, dy: padding)
             
-            accessoryView.frame.offsetInPlace(dx: padding, dy: (actualSize.height - accessoryView.frame.size.height)/2)
+            accessoryView.frame = accessoryView.frame.offsetBy(dx: padding, dy: (actualSize.height - accessoryView.frame.size.height)/2)
         } else {
             actualSize = CGSize(width: max(accessoryView.frame.size.width, label.frame.size.width) + padding * 2,
                 height: label.frame.size.height + accessoryView.frame.size.height + padding * 3)
             
             label.frame = label.frame.offsetBy(dx: padding, dy: accessoryView.frame.size.height + padding * 2)
             
-            accessoryView.frame.offsetInPlace(dx: (actualSize.width - accessoryView.frame.size.width)/2, dy: padding)
+            accessoryView.frame = accessoryView.frame.offsetBy(dx: (actualSize.width - accessoryView.frame.size.width)/2, dy: padding)
         }
         
         // Container view
@@ -447,9 +447,9 @@ open class SwiftOverlays: NSObject {
     
         var notificationView: UIView?
         
-        if sender.isKind(of: UITapGestureRecognizer) {
+        if sender.isKind(of: UITapGestureRecognizer.self) {
             notificationView = (sender as! UITapGestureRecognizer).view!
-        } else if sender.isKind(of: UIView) {
+        } else if sender.isKind(of: UIView.self) {
             notificationView = (sender as! UIView)
         }
         
